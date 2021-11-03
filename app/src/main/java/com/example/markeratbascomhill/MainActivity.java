@@ -63,6 +63,9 @@ public class MainActivity extends AppCompatActivity {
                     .addOnCompleteListener(this, task -> {
                         Location mLastKnownLocation = task.getResult();
                         if (task.isSuccessful() && mLastKnownLocation != null){
+                            mMap.addMarker(new MarkerOptions().position(new LatLng(mLastKnownLocation
+                                    .getLatitude(),mLastKnownLocation.getLongitude()))
+                                    .title("current"));
                             mMap.addPolyline(new PolylineOptions().add(
                                     new LatLng(mLastKnownLocation.getLatitude(), mLastKnownLocation.getLongitude()),
                                     mDestinationLatLng));
